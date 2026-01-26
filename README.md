@@ -553,6 +553,7 @@ nohup <command> & -> it is used to run the command in the background and it will
 
 nohup <command> > <file_name> & -> it is used to run the command in the background and it will not stop even if the terminal is closed and it will store the output in the file
 
+ 
 
 vmstat -> it is used to show the virtual memory statistics
 
@@ -613,4 +614,166 @@ Press Enter
 
 
 
+
+
+pwd -> it is used to show the current working directory
+
+show : /home/dipongkar
+
+cd -> it is used to change the directory
+
+show : cd /home/dipongkar
+
+ls -> it is used to list the files and directories
+
+show : ls
+
+ls -l -> it is used to list the files and directories in detail
+
+show : ls -l
+
+ls -a -> it is used to list the hidden files and directories
+
+show : ls -a
+
+ls -la -> it is used to list the hidden files and directories in detail
+
+show : ls -la
+
+ls -lh -> it is used to list the files and directories in human readable format
+
+show : ls -lh
+
+ls -lhS -> it is used to list the files and directories in human readable format and sorted by size
+
+show : ls -lhS
+
+ls -lht -> it is used to list the files and directories in human readable format and sorted by time
+
+show : ls -lht
+
+ls -lhSrt -> it is used to list the files and directories in human readable format and sorted by size in
+
  
+
+
+1. System Level Command
+
+uname -> it is used to show the system information which system is running exmaple linux
+
+uname -a -> it is used to show the system information in detail
+
+show : Linux Dip 6.14.0-37-generic #37~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Nov 20 10:25:38 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+
+Meaning of each part
+Part	                               Explanation
+Linux	                            Kernel name (Linux kernel)
+Dip                              	Hostname (computer name)
+6.14.0-37-generic	                Kernel version
+#37~24.04.1-Ubuntu	              Kernel build number and Ubuntu release
+SMP	                              Symmetric Multi-Processing (supports        multiple CPUs/cores)
+PREEMPT_DYNAMIC	                  Kernel preemption model (better responsiveness)
+Thu Nov 20 10:25:38 UTC 2024	    Kernel build date and time
+x86_64	                          CPU architecture (64-bit)
+x86_64	                          Hardware platform
+x86_64	                          Processor type
+GNU/Linux	                        Operating system (GNU tools + Linux kernel)
+
+
+uname -r -> it is used to show the kernel version
+
+uname -s   # Kernel name
+uname -n   # Hostname
+uname -r   # Kernel version
+uname -m   # Architecture
+uname -o   # OS type
+
+uptime -> it show how many time system is running 
+
+
+
+who -> who is a Linux command used to show who is currently logged in to the system.
+
+show :
+dipongkar seat0        2026-01-26 08:59 (login screen)
+dipongkar tty2         2026-01-26 08:59 (tty2)
+
+Column meaning (from who)
+Column	                        Meaning
+dipongkar	                    Username
+seat0 / tty2	                Login terminal
+2026-01-26 08:59	            Login date and time
+(login screen) / (tty2)	      Login source
+
+
+whoami -> it is used to show the current user name
+show : dipongkar
+
+which -> it is used to show the path of the command
+
+show : /usr/bin/which
+
+
+id -> show user id (uid) group id (gid) groups=....
+
+show : uid=1000(dipongkar) gid=1000(dipongkar) groups=1000(dipongkar),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),122(lpadmin),138(lxd),139(sambashare)
+
+shutdown -> it is used to shutdown the system
+
+shutdown -r -> it is used to restart the system
+
+shutdown -c -> it is used to cancel the shutdown or restart command
+
+shutdown -h -> it is used to shutdown the system
+
+shutdown -h now -> it is used to shutdown the system immediately
+
+shutdown -h 10 -> it is used to shutdown the system after 10 minutes
+
+if not working(because not root user) then use sudo shutdown -c
+
+sudo shutdown 
+
+
+ctrl+r -> it is used to search the command in the history reverse direction
+ctrl+b -> it is used to search the command in the history forward direction
+
+history -> it is used to show the history of the command
+
+ctrl+c -> it is used to stop the command
+
+ctrl+z -> it is used to pause the command
+
+ctrl+d -> it is used to exit the terminal
+
+
+apt -> it is used to install the package
+
+apt install <package_name> -> it is used to install the package
+
+apt remove <package_name> -> it is used to remove the package
+
+apt update -> it is used to update the package list
+
+apt upgrade -> it is used to upgrade the package
+
+apt search <package_name> -> it is used to search the package
+
+apt show <package_name> -> it is used to show the package details
+
+apt list -> it is used to list the package
+
+apt list --installed -> it is used to list the installed package
+
+apt list --upgradable -> it is used to list the upgradable package
+
+apt list --all-versions -> it is used to list the all versions of the package
+
+apt list --installed --upgradable -> it is used to list the installed and upgradable package
+
+apt list --installed --upgradable --all-versions -> it is used to list the installed, upgradable and all versions of the package
+
+apt list --installed --upgradable --all-versions | grep <package_name> -> it is used to list the installed, upgradable and all versions of the package and grep the package name
+
+apt list --installed --
+
