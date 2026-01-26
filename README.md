@@ -777,3 +777,326 @@ apt list --installed --upgradable --all-versions | grep <package_name> -> it is 
 
 apt list --installed --
 
+
+
+
+
+User & Group Management command
+
+we need to add "sudo" for these commands at first
+like sudo useradd -m ... 
+
+useradd -> it is used to add the user
+
+useradd -m <username> -> it is used to add the user with home directory
+
+useradd -m -s /bin/bash <username> -> it is used to add the user with home directory and bash shell
+
+useradd -m -s /bin/bash -G sudo <username> -> it is used to add the user with home directory, bash shell and sudo group
+
+useradd -m -s /bin/bash -G sudo -p $(openssl passwd -1 <password>) <username> -> it is used to add the user with home directory, bash shell, sudo group and password
+
+useradd -m -s /bin/bash -G sudo -p $(openssl passwd -1 <password>) -e <date> <username> -> it is used to add the user with home directory, bash shell, sudo group, password and expiry date
+
+useradd -m -s /bin/bash -G sudo -p $(openssl passwd -1 <password>) -e <date> -c "<comment>" <username> -> it is used to add the user with home directory, bash shell, sudo group, password, expiry date and comment
+
+
+cat /etc/passwd -> it is used to show the list of users
+
+
+
+
+
+
+sudo password -> it is used to change the password of the user
+
+sudo passwd <username> -> it is used to change the password of the user
+
+sudo passwd -l <username> -> it is used to lock the user
+
+sudo passwd -u <username> -> it is used to unlock the user
+
+sudo passwd -d <username> -> it is used to delete the password of the user
+
+sudo passwd -S <username> -> it is used to show the status of the user
+show : Dip P 2026-01-26 0 99999 7 -1
+
+Dip P 2026-01-26 0 99999 7 -1
+│   │     │       │    │   │
+│   │     │       │    │   └─ Account expiration (-1 = never expires)
+│   │     │       │    └──── Warning days before password expiry
+│   │     │       └──────── Maximum password age (days)
+│   │     └──────────────── Minimum password age (days)
+│   └────────────────────── Password status
+└────────────────────────── Username
+
+field-by-field explanation
+
+Dip
+Username
+
+P
+Password status
+
+P = password is set
+
+L = account locked
+
+NP = no password
+
+2026-01-26
+Last password change date
+
+0
+Minimum days between password changes
+→ User can change password immediately
+
+99999
+Maximum password age
+→ Password effectively never expires
+
+7
+Warning period (days)
+→ User is warned 7 days before password expiration
+
+-1
+Account expiration
+→ Account never expires
+
+sudo chage -l <username> -> it is used to show the status of the user
+
+sudo passwd -x <days> <username> -> it is used to set the expiry date of the user
+
+sudo passwd -n <days> <username> -> it is used to set the minimum days of the user
+
+sudo passwd -w <days> <username> -> it is used to set the warning days of the user
+
+sudo passwd -i <days> <username> -> it is used to set the inactive days of the user
+
+sudo passwd -e <username> -> it is used to set the expiry date of the user
+
+sudo passwd -l <username> -> it is used to lock the user
+
+sudo passwd -u <username> -> it is used to unlock the user
+
+whoami -> it is used to show the current user
+
+su <username> -> it is used to switch the user
+
+sudo su <username> -> it is used to switch the user with sudo
+
+sudo su - <username> -> it is used to switch the user with sudo and home directory
+
+sudo su - -> it is used to switch the user with sudo and home directory
+
+sudo su -> it is used to switch the user with sudo
+
+
+
+sudo userdel <username> -> it is used to delete the user
+
+if the user has home directory then it will not be deleted
+and it show proccess id 
+
+sudo userdel -r <username> -> it is used to delete the user and home directory
+
+sudo rm -rf /home/Dip -> it is used to delete the home directory of the user
+
+
+
+
+just userdel are not enough to delete the user completely
+we need to delete the user from
+
+Step 1: Confirm where Dip still exists
+
+getent passwd Dip
+getent shadow Dip
+getent group Dip
+
+Step 2: Check the user ID (optional but useful)
+id Dip
+
+Step 3: Remove the user cleanly (force if necessary)
+
+sudo pkill -u Dip 2>/dev/null
+sudo userdel -r -f Dip
+sudo rm -rf /home/Dip -> it is used to delete the home directory of the user
+
+Step 4: Remove leftover group (very common cause)
+sudo groupdel Dip 2>/dev/null
+
+
+Step 5: Verify complete removal
+
+getent passwd Dip
+getent group Dip
+
+
+
+
+groupadd -> it is used to add the group
+
+groupadd <groupname> -> it is used to add the group
+
+
+cat /etc/group -> it is used to show the group list
+
+
+in below ,this are not neccessary
+
+groupadd -g <gid> <groupname> -> it is used to add the group with gid
+
+groupadd -g <gid> -r <groupname> -> it is used to add the group with gid and system group
+
+groupadd -g <gid> -r -f <groupname> -> it is used to add the group with gid, system group and force
+
+groupadd -g <gid> -r -f -p <password> <groupname> -> it is used to add the group with gid, system group, force and password
+
+groupadd -g <gid> -r -f -p <password> -e <date> <groupname> -> it is used to add the group with gid, system group, force, password and expiry date
+
+groupadd -g <gid> -r -f -p <password> -e <date> -c "<comment>" <groupname> -> it is used to add the group with gid, system group, force, password, expiry date and comment
+
+groupadd -g <gid> -r -f -p <password> -e <date> -c "<comment>" -s <shell> <groupname> -> it is used to add the group with gid, system group, force, password, expiry date, comment and shell
+
+
+
+
+
+
+
+sudo gpasswd -a <username> <groupname> -> it is used to add the user to the group
+
+
+sudo gpasswd -d <username> <groupname> -> it is used to remove the user from the group
+
+sudo gpasswd -A <username1>,<username2> <groupname> -> it is used to add the user to the group as admin
+
+sudo gpasswd -M <username1>,<username2> <groupname> -> it is used to add the user to the group as member
+
+sudo gpasswd -r <groupname> -> it is used to remove the password from the group
+sudo gpasswd -R <groupname> -> it is used to remove the group from the system
+
+
+
+sudo groupdel <groupname> -> it is used to delete the group
+
+sudo groupdel -f <groupname> -> it is used to delete the group forcefully
+
+
+folder / file -> permission
+
+
+drwxrwxrwx 
+d -> directory
+r -> read
+w -> write
+x -> execute
+d{rwx}{rwx}{rwx}
+d{user/owner}{group}{other}
+rwx -> owner
+rwx -> group
+rwx -> other
+
+
+0 0 0 -> 0 <- - - -
+0 0 1 -> 1 <- - - x
+0 1 0 -> 2 <- - w -
+0 1 1 -> 3 <- - w x
+1 0 0 -> 4 <- r - -
+1 0 1 -> 5 <- r - x
+1 1 0 -> 6 <- r w -
+1 1 1 -> 7 <- r w x
+
+example:
+with director call folder
+drwxrwxrwx -> 777
+drwxr-x
+r-x -> 755
+drwxr-x--- -> 750
+drwx------ -> 700
+drw-rw-rw- -> 666
+drw-rw---- -> 660
+drw-r----- -> 640
+drw------- -> 600
+d--x--x--x -> 111
+d--------- -> 000
+
+without directory call file
+-rwxrwxrwx -> 777
+-rwxr-xr-x -> 755
+-rwxr-x--- -> 750
+-rwx------ -> 700
+-rw-rw-rw- -> 666
+-rw-rw---- -> 660
+-rw-r----- -> 640
+-rw------- -> 600
+---x--x--x -> 111
+---------- -> 000
+
+
+change folder/file permission
+
+sudo chmod 755 <folder/file> -> it is used to change the permission of the folder/file
+
+sudo chmod -R 755 <folder/file> -> it is used to change the permission of the folder/file recursively
+
+symbolic permission
+
+sudo chmod u=rwx,g=rx,o=rx <folder/file> -> it is used to change the permission of the folder/file
+
+sudo chmod -R u=rwx,g=rx,o=rx <folder/file> -> it is used to change the permission of the folder/file recursively
+
+
+umask -> it is used to set the default permission of the folder/file
+
+umask 022 -> it is used to set the default permission of the folder/file
+
+
+sudo chown <username> <folder/file> -> it is used to change the owner of the folder/file
+
+sudo chown <username>:<groupname> <folder/file> -> it is used to change the owner and group of the folder/file
+
+
+sudo chgrp <groupname> <folder/file> -> it is used to change the group of the folder/file
+
+
+
+compress file
+
+
+zip file.zip file1 file2 file3 -> compress the file
+
+zip -r file.zip folder -> compress the folder recursively
+
+
+unzip -> unzip file.zip
+
+
+tar -> tar -cvf file.tar file1 file2 file3
+
+untar -> tar -xvf file.tar
+
+tar with gzip -> tar -czvf file.tar.gz file1 file2 file3
+
+untar with gzip -> tar -xzvf file.tar.gz
+
+
+c → Create a new archive
+
+z → Compress with gzip
+
+v → Show all files while adding
+
+f Dip_backup.tar.gz → Save the archive as Dip_backup.tar.gz
+
+
+
+
+x → Extract the archive
+
+z → Decompress with gzip
+
+v → Show all files while extracting
+
+f Dip_backup.tar.gz → Extract the archive Dip_backup.tar.gz
