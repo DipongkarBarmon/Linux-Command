@@ -1100,3 +1100,153 @@ z → Decompress with gzip
 v → Show all files while extracting
 
 f Dip_backup.tar.gz → Extract the archive Dip_backup.tar.gz
+
+
+
+
+
+
+
+
+Networking command
+
+ping <ip> -> it is used to check the connectivity of the network
+
+netstat -> it is used to check the network status
+
+ifconfig -> it is used to check the network interface
+
+traceroute <ip> -> it is used to check the path of the network. source to destination .source you and destination  youtube is the ip you want to check
+
+tracepath <ip/domain> -> it is used to check the path of the network
+
+mtr <domain> -> it is used to check the path of the nerwork and o check the connectivity of the network
+
+
+nslookup <domain> -> it is used to check the dns record
+
+
+
+telnet <ip> <port> -> it is used to check the port of the network
+
+hostname -> it is used to check the hostname of the network
+
+cat /etc/hosts -> it is used to check the hosts file
+
+ip address show -> it is used to check the ip address of the network
+
+iwconfig -> it is used to check the wireless network interface
+
+iwlist scan -> it is used to check the wireless network interface
+
+ss -> it is used to check the network status
+
+dig <domain> -> it is used to check the dns recorddipongkar@Dip:~$ 
+
+whois <domain> -> it is used to check the whois record
+ 
+arp -> it is used to check the arp record
+
+ssh <username>@<ip> -> it is used to login to the remote server
+
+scp <file> <username>@<ip>:<path> -> it is used to copy the file to the remote server
+
+
+
+curl -X <method> <url> -> it is used to send the request to the server
+
+curl -X <method> <url> | jq -> it is used to send the request to the server and format the json response
+
+curl <url> -> it is used to download the file from the internet
+
+wget <url> -> it is used to download the file from the internet
+
+watch top -> it is used to check the process of the system
+
+watch -n 1(canbe anything) top -> it is used to check the process of the system every 1 second
+
+nmap -v <domain> -> it is used to check the port of the network
+
+route -> it is used to check the routing table
+
+iptables -> it is used to configure the firewall
+
+ufw -> it is used to configure the firewall
+
+sudo apt-get update -> it is used to update the package list
+
+
+sudo apt-get install <package> -> it is used to install the package
+
+sudo apt-get remove <package> -> it is used to remove the package
+
+sudo apt-get update -> it is used to update the package
+a 
+sudo apt-get upgrade -> it is used to upgrade the package
+
+sudo apt-get autoremove -> it is used to remove the unused package
+
+sudo apt-get clean -> it is used to clean the package cache
+
+
+
+
+
+
+vim <file> -> it is used to edit the file
+
+nano <file> -> it is used to edit the file
+
+
+
+ PRO Linux Command 
+
+awk need formated data
+
+awk '{print}' <file> -> it is used to print the file
+awk '{print $1}' <file> -> it is used to print the first column of the file
+
+awk '{print $1,$2}' <file> -> it is used to print the first and second column of the file
+awk '<condition> {print}' <file> -> it is used to print the file based on the condition>
+
+awk '<condition> {print $1}' <file> -> it is used to print the first column of the file based on the condition>
+
+awk '<line number> {print}' <file> -> it is used to print the line number of the file
+
+awk '<for loop> {print}' <file> -> it is used to print the file based on the for loop
+
+fillter 
+sed -n '/INFO/p' <file> -> it is used to print line where are INFO
+sed -n '/INFO/!p' <file> -> it is used to print line where are not INFO 
+
+
+
+sed -i 's/INFO/ERROR/g' <file> -> it is used to replace the INFO with ERROR in the file
+
+
+
+grep INFO <file> -> it is used to print the line where are INFO 
+
+grep -i "INFO"/info <file> -> it is used to print the line where are INFO
+
+grep -v "INFO" <file> -> it is used to print the line where are not INFO
+
+grep -c "INFO" <file> -> it is used to count the number of lines where are INFO
+
+grep -n "INFO" <file> -> it is used to print the line number where are INFO
+
+grep -w "INFO" <file> -> it is used to print the line where are INFO as a whole word
+
+grep -A 2 "INFO" <file> -> it is used to print the line where are INFO and 2 lines after it
+
+grep -B 2 "INFO" <file> -> it is used to print the line where are INFO and 2 lines before it
+
+grep -C 2 "INFO" <file> -> it is used to print the line where are INFO and 2 lines before and after it
+
+grep -r "INFO" <directory> -> it is used to print the line where are INFO in the directory
+
+grep -l "INFO" <directory> -> it is used to print the file name where are INFO in the directory
+
+ps aux -> it is used to print the process running in the system
+
+ps aux | grep -i "any name" -> it is used to print the line
